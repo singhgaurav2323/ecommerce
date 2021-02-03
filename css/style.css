@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body a{
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+li{
+    display: inline-block;
+    margin: 0px 6px;
+}
+
+.top-head{
+    background-color: #F0F0E9;
+}
+
+.nav-head2, .nav-head1{
+    margin-top: 2px;
+}
+
+.logo{
+    height: 100px;
+}
+
+.links{
+    background-color: blue;
+}
+
+li a{
+    margin: auto 10px;
+}
+
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
