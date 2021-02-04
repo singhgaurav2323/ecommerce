@@ -1,8 +1,22 @@
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
+@import url(http://fonts.googleapis.com/css?family=Abel);
+
+
+/* ***************************************************************** */
+/* Navigation section */
+/* ***************************************************************** */
+
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     text-decoration: none;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
 }
 
 body a{
@@ -42,4 +56,99 @@ li a{
     display: flex;
     align-items: center;
     justify-content: center;
+
+}
+
+.border{
+    border-bottom: 0.5px black;
+}
+
+/* ***************************************************************** */
+/* carousel Section */
+/* ***************************************************************** */
+#slider {
+    /* padding-bottom: 45px; */
+    margin-top: 70px;
+    position: relative;
+}
+
+.slider{
+    height: 200px;
+}
+
+.fa-lg{
+    font-size: 40px !important;
+    font-weight: 700  !important;
+    color: blue;
+}
+
+.carousel-indicators li{
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    background-color: #C4C4BE !important ;
+    z-index: 15 !important;
+}
+
+.carousel-indicators li.active{
+    background-color: #FE980F !important;
+}
+
+.girl {
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    border: none;
+    width: 460px;
+}
+
+.carousel-item{
+    margin-right: 0px !important;
+}
+
+.carousel-inner{
+    height: 400px;
+}
+
+.carousel-indicators{
+    top: 70%;
+}
+
+.fa-angle-left{
+    position: relative;
+    top: -23%;
+    left: -22%;
+}
+
+.fa-angle-right{
+    position: relative;
+    top: -23%;
+    right: -20%;
+}
+
+
+.carousel-item h1 {
+    color: #B4B1AB;
+    font-family: abel;
+    font-size: 48px;
+    margin-top: 50px;
+}
+
+.carousel-item h1 span {
+    color: #FE980F;
+}
+
+.carousel-item h2 {
+    color: #363432;
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    margin-top: 10px;
+}
+
+.carousel-item p {
+    color: #363432;
+    font-size: 16px;
+    font-weight: 300;
 }
