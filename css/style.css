@@ -100,6 +100,7 @@ li a{
     left: 50%;
     border: none;
     width: 460px;
+    z-index: -45;
 }
 
 .carousel-item{
@@ -151,4 +152,87 @@ li a{
     color: #363432;
     font-size: 16px;
     font-weight: 300;
+}
+
+
+/* ***************************************************************** */
+/* Product Section */
+/* ***************************************************************** */
+
+.title{
+    color: #FE980F;
+    font-family: abel;
+    margin-bottom: 30px;
+}
+
+.product-card{
+    padding: 10px 7px;
+}
+
+.productinfo .product-img{
+    height: 180px;
+    max-width: 250px;
+}
+
+.productinfo .label{
+    height: 50px;
+    position: absolute;
+    top: 0%;
+    left: 79%;
+}
+
+.single-products{
+    position: relative;
+    border: 2px solid #F7F7F5;
+    box-shadow: 4px 2px 3px #d1eff5;
+}
+
+.add-to-cart{
+    position: relative;
+    left: 20%;
+    background: #F5F5ED;
+    border: 0 none;
+    border-radius: 0;
+    color: #b9b6b0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.fa-shopping-cart, .fa-plus-square{
+    margin-right: 7px;
+}
+
+.product-overlay{
+    padding: 20px 15px;
+}
+
+.overlay-content{
+    margin-bottom: 10px;
+}
+
+.overlay-content p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #696763;
+}
+
+.overlay-content a{
+    background-color: #e2dfd8;
+}
+
+.overlay-content h3{
+    color: #FE980F;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-pills li a{
+    color: #B3AFA8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    padding-left: 9px;
+    padding-right: 0;
 }
