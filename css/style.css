@@ -5,7 +5,8 @@
 
 
 /* ***************************************************************** */
-/* Navigation section */
+/* Main header started */
+/* Main Navbar started */
 /* ***************************************************************** */
 
 *{
@@ -27,7 +28,7 @@ ul {
     list-style: none;
 }
 
-li{
+ul li{
     display: inline-block;
     margin: 0px 6px;
 }
@@ -60,15 +61,17 @@ li a{
 }
 
 .border{
+    margin-top: -10px;
     border-bottom: 0.5px black;
 }
 
 /* ***************************************************************** */
-/* carousel Section */
+/* Slider images starts here */
 /* ***************************************************************** */
 #slider {
     /* padding-bottom: 45px; */
-    margin-top: 70px;
+    margin-top: 100px;
+    margin-bottom: 50px;
     position: relative;
 }
 
@@ -154,15 +157,35 @@ li a{
     font-weight: 300;
 }
 
+/* ***************************************************************** */
+/* Lines draw across heading */
+/* ***************************************************************** */
+
+.lines{
+    display: grid;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+    grid-gap: 20px;
+    /* border: 1px solid #f5f5f5; */
+}
+
+.lines:before,
+.lines:after {
+    content: '';
+    border-top: 2px solid;
+}
+
 
 /* ***************************************************************** */
-/* Product Section */
+/* Main Feature product listing */
 /* ***************************************************************** */
 
 .title{
     color: #FE980F;
     font-family: abel;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .product-card{
@@ -236,3 +259,82 @@ li a{
     padding-left: 9px;
     padding-right: 0;
 }
+
+
+/* ***************************************************************** */
+/* Category of products */
+/* ***************************************************************** */
+
+.category{
+    border: 1px solid #F7F7F5;
+    padding: 10px;
+}
+
+.category-head{
+    display: flex;
+    place-content: space-between;
+}
+
+.collapse ol{
+    list-style: none;
+    text-decoration: none;
+}
+
+.category-head p{
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.category-head i{
+    padding: 4px;
+}
+
+.panel-body li{
+    list-style: none;
+}
+
+.panel-body a{
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+}
+
+.panel-body{
+    margin-bottom: 7px;
+    margin-top: -8px;
+}
+
+
+/* ***************************************************************** */
+/* Brand of products */
+/* ***************************************************************** */
+
+.brand-head{
+    margin-top: 25px;
+}
+
+.brand{
+    border: 1px solid #F7F7F5;
+    padding: 10px 17px;
+}
+
+.brand li{
+    list-style: none;
+    margin-bottom: 4px;
+}
+
+.brand li a{
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+/* ***************************************************************** */
+/*  Pagination and Scroll of product  */
+/* ***************************************************************** */
+
