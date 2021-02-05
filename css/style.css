@@ -16,6 +16,10 @@
     text-decoration: none;
 }
 
+.fa{
+    color: #696763;
+}
+
 body{
     font-family: 'Roboto', sans-serif;
 }
@@ -41,12 +45,24 @@ ul li{
     margin-top: 2px;
 }
 
+.nav-head1 a{
+    color: #696763;
+    font-size: 13px;
+}
+
 .logo{
     height: 100px;
 }
 
 .links{
     background-color: blue;
+}
+
+.navbar-links a{
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
 }
 
 li a{
@@ -337,4 +353,8 @@ li a{
 /* ***************************************************************** */
 /*  Pagination and Scroll of product  */
 /* ***************************************************************** */
+
+.recommend{
+    margin: 25px auto;
+}
 
