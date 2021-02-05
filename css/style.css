@@ -5,8 +5,8 @@
 
 
 /* ***************************************************************** */
-/* Main header started */
-/* Main Navbar started */
+/********************* Main header started ***************************/
+/********************* Main Navbar started ***************************/
 /* ***************************************************************** */
 
 *{
@@ -82,7 +82,7 @@ li a{
 }
 
 /* ***************************************************************** */
-/* Slider images starts here */
+/****************** Slider images starts here ************************/
 /* ***************************************************************** */
 #slider {
     /* padding-bottom: 45px; */
@@ -134,13 +134,13 @@ li a{
     top: 70%;
 }
 
-.fa-angle-left{
+.icon .fa-angle-left{
     position: relative;
     top: -23%;
     left: -22%;
 }
 
-.fa-angle-right{
+.icon .fa-angle-right{
     position: relative;
     top: -23%;
     right: -20%;
@@ -174,7 +174,7 @@ li a{
 }
 
 /* ***************************************************************** */
-/* Lines draw across heading */
+/*********************** Lines draw across heading *******************/
 /* ***************************************************************** */
 
 .lines{
@@ -195,7 +195,7 @@ li a{
 
 
 /* ***************************************************************** */
-/* Main Feature product listing */
+/********************** Main Feature product listing *****************/
 /* ***************************************************************** */
 
 .title{
@@ -278,7 +278,7 @@ li a{
 
 
 /* ***************************************************************** */
-/* Category of products */
+/******************* Category of products ****************************/
 /* ***************************************************************** */
 
 .category{
@@ -325,7 +325,7 @@ li a{
 
 
 /* ***************************************************************** */
-/* Brand of products */
+/********************** Brand of products ****************************/
 /* ***************************************************************** */
 
 .brand-head{
@@ -351,10 +351,89 @@ li a{
 }
 
 /* ***************************************************************** */
-/*  Pagination and Scroll of product  */
+/*********************  Pagination and Scroll of product  ************/
 /* ***************************************************************** */
 
 .recommend{
     margin: 25px auto;
 }
 
+.recommend-box .carousel-control-prev{
+    position: absolute;
+    left: 2%;
+}
+
+.recommend-box .carousel-control-next{
+    position: absolute;
+    right: -4%;
+}
+
+
+.recommend-box{
+    position: relative;
+}
+
+/* ****************************************************************** */
+/********************** Footer section ********************************/
+/* ****************************************************************** */
+
+#footer{
+    background-color: #F5F5ED;
+    padding: 100px 30px;
+}
+
+.single-widget h2 {
+    color: #666663;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    margin-left: 19px;
+}
+
+.nav{
+    display: grid !important;
+}
+
+.single-widget .nav{
+    list-style: none;
+}
+
+.single-widget .nav li{
+    font-size: 16px;
+    display: list-item;
+    margin: 3px 0px;
+}
+
+.single-widget .searchform{
+    margin-left: 19px;
+    color: #363432;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.single-widget .searchform input{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #DDDDDD;
+    color: #CCCCC6;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    outline: medium none;
+    border-radius: 5px;
+}
+
+.searchform .btn{
+    padding: 10px;
+}
+
+.copyright{
+    padding: 50px 30px;
+}
+
+.copyright p{
+    color: #363432;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
