@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// product and dashboard setup
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
 
+Route::get('/{product}', function ($product) {
+    return view('product', ["product" => $product]);
+})->name('product');
+
+// authentication setup
 Auth::routes();
 
+// home setup
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -35,7 +35,7 @@ body{
 
 /****************** Scrollbar */
 .scrollbar
-{
+{   display: grid !important;
 	float: left;
 	background: #F5F5F5;
     padding-left: 10px;
@@ -85,12 +85,6 @@ body{
     border: 2px black;
 }
 
-.fix{
-    position: fixed !important;
-    top: 64px !important;
-    bottom: 0;
-    z-index: 2;
-}
 
 .button-list{
     display: flex;
@@ -129,13 +123,6 @@ body{
 /****************************************************************************************************/
 /******************************************** Right section of page ********************************/
 /**************************************************************************************************/
-
-
-.info{
-    position: absolute;
-    left: 45%;
-    transform: translateX(-5%);
-}
 
 .badge{
     background-color: #198754;
