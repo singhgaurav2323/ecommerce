@@ -15,6 +15,9 @@
     @yield('custom-style')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Styles -->
     <style>
         body {
@@ -58,8 +61,34 @@
                         <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                         <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                         <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                        @guest
+                        @if (Route::has('login'))
                         <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                        @endif
+
+                        @if (Route::has('register'))
                         <li><a href="{{ route('register') }}"><i class="fa fa-user"></i> Account</a></li>
+                        @endif
+
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fa fa-user-circle"></i>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
                     </ul>
                 </div>
             </div>
