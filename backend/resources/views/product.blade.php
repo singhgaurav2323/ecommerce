@@ -10,21 +10,19 @@
     <div class="row">
         <div class="col-md-5 fix" style="margin-left:17px;">
             <ul class="slider scrollbar" id="style-8">
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img1.jpeg'" src="image/product/img1.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img2.jpeg'" src="image/product/img2.jpeg" src="image/product/img2.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img3.jpeg'" src="image/product/img3.jpeg" src="image/product/img3.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img4.jpeg'" src="image/product/img4.jpeg" src="image/product/img4.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img5.jpeg'" src="image/product/img5.jpeg" src="image/product/img5.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img6.jpeg'" src="image/product/img6.jpeg" src="image/product/img6.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img7.jpeg'" src="image/product/img7.jpeg" src="image/product/img7.jpeg" alt="product image"></li>
-                <li><img type="button" onmouseover="document.getElementById('image').src='image/product/img8.jpeg'" src="image/product/img8.jpeg" src="image/product/img8.jpeg" alt="product image"></li>
+                @foreach($images as $image)
+                <li><img type="button" onmouseover="document.getElementById('image').src='{{ $image }}'" src="{{ $image }}" alt="product image"></li>
+                @endforeach
             </ul>
             <div class="main-img">
-                <img id="image" src="image/product/img1.jpeg" alt="product image">
+                <img id="image" src="{{ explode('|', $product->images)[0] }}" alt="product image">
             </div>
             <div class="button-section">
                 <ul class="button-list">
-                    <li><button type="submit"><i class="far fa-shopping-cart"></i>Add To Cart</button></li>
+                    <form action="{{ route('cartAdd', ['product'=>$product->asing]) }}" method="POST">
+                        @csrf
+                        <li><button type="submit"><i class="far fa-shopping-cart"></i>Add To Cart</button></li>
+                    </form>
                     <li><button type="submit"><i class="fab fa-cc-mastercard"></i>Buy Now</button></li>
                 </ul>
             </div>
@@ -32,12 +30,12 @@
 
         <div class="col-md-6 info">
             <div class="product-title">
-                <h5><span>boAt Airdopes 131 Bluetooth Headset</span></h5>
+                <h5><span>{{ $product->title }}</span></h5>
                 <p class="description"><span class="badge badge-success ">4 ⭐</span> <span class="text-muted">86,300 Ratings & 8,621 Reviews</span></p>
                 <p>
-                    <span class="price-main">₹1299</span>
-                    <span style="position: relative; top: -3px;" class="text-muted price-silent">₹2990</span>
-                    <span style="position: relative; top: -3px;" class="off-percentage">56% off</span>
+                    <span class="price-main">₹ {{ $product->price }}</span>
+                    <span style="position: relative; top: -3px;" class="text-muted price-silent">₹ {{ $product->mrp }}</span>
+                    <span style="position: relative; top: -3px;" class="off-percentage">{{ floor(($product->mrp-$product->price)/$product->mrp*100) }}% off</span>
                 </p>
             </div>
 
@@ -65,7 +63,7 @@
                         <li class="highlight">IWP Technology</li>
                     </ul>
                 </div>
-                <div class="col-sm-6 warranty">
+                <div class="col-sm-6 warranty" style="padding-right: 0;">
                     <span class="text-muted">Specials</span>
                     <ul class="special-warranty">
                         <li><i class="far fa-badge-check"></i><span>1 Year Warranty</span></li>
@@ -83,17 +81,22 @@
                     <i class="fa fa-plus-circle" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-hidden="true" style="padding: 10px;"></i>
                 </div>
                 <div class="modal-body collapse" id="collapseDescription">
-                    <div style="display: flex; padding-left: 0; padding-right: 0;">
+                    <ul style="padding-left: 0; padding-right: 0;">
+
                         <span class="text-muted" style="margin-left: 0;">Description</span>
-                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">Are you looking for a wireless earbud-type headset that delivers an impressive playback time? If your answer is yes, bring home the boAt Airdopes 131 that comes with a carrying case.
-                            This carrying case also acts as a 650 mAh portable charger that extends the playback time of these earbuds by up to 15 hours, i.e. 4 times its normal charging capacity.
-                            The normal battery capacity of each of these earbuds is 40 mAh and this delivers up to 3 hours of playback time.
-                            These earbuds feature Bluetooth v5.0 technology that delivers a stable connection that lets your rock on without connectivity issues.
-                            The stereo calling feature of these earbuds allows you to enjoy calls via its built-in microphone and 13-mm drivers.
-                            These earbuds are powered up by the IWP Technology featured in them the moment you open the case.
-                            The presence of a Type-C charging port ensures you can easily charge it with any charger that has a compatible cable.
-                        </p>
-                    </div>
+                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">{{ $product->category }}</p>
+                        <div class="text-muted" style="margin-left: 0;">Description</div>
+                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">{{ $product->category }}</p>
+                        <div class="text-muted" style="margin-left: 0;">Quantity</div>
+                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">{{ $product->quantity }}</p>
+                        <div class="text-muted" style="margin-left: 0;">Brand</div>
+                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">{{ $product->brand }}</p>
+                        <div class="text-muted" style="margin-left: 0;">Stock</div>
+                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">{{ $product->stock }}</p>
+                        <div class="text-muted" style="margin-left: 0;">Description</div>
+                        <p style="padding: 0 10px; font-size: 14px; text-align: justify;">{{ $product->description }}</p>
+
+                    </ul>
                 </div>
             </div>
         </div>

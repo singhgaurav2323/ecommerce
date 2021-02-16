@@ -227,15 +227,15 @@ li a{
 }
 
 .add-to-cart{
-    position: relative;
-    left: 20%;
-    background: #F5F5ED;
-    border: 0 none;
-    border-radius: 0;
-    color: #b9b6b0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    margin-bottom: 15px;
+    position: relative !important;
+    left: 20% !important;
+    background: #F5F5ED !important;
+    border: 0 none !important;
+    border-radius: 0 !important;
+    color: #b9b6b0 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 15px !important;
+    margin-bottom: 15px !important;
 }
 
 .fa-shopping-cart, .fa-plus-square{

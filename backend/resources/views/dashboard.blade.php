@@ -7,6 +7,14 @@
 @section('content')
 <!-- Slider images starts here -->
 <section id="slider">
+
+    @if(Session::has('cart'))
+    <div class="alert alert-warning lert-warning alert-dismissible fade show" style="position: relative;" role="alert">
+        <h5 style="position: relative; left: 20%;">Added to Cart successfully!</h5>
+        <button type="button" class="btn btn-primary close" data-dismiss="alert" style="position: absolute; right: 25%; top: 10px; border-radius: 50%;">&times;</button>
+    </div>
+    @endif
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -184,13 +192,9 @@
                 <!-- Brand of products -->
                 <h3 class="title text-center lines brand-head">Brand</h3>
                 <div class="brand">
-                    <li><a href="#"> <span class="pull-right">(50)</span>Brand1</a></li>
-                    <li><a href="#"> <span class="pull-right">(40)</span>Brand2</a></li>
-                    <li><a href="#"> <span class="pull-right">(100)</span>Brand3</a></li>
-                    <li><a href="#"> <span class="pull-right">(20)</span>Brand4</a></li>
-                    <li><a href="#"> <span class="pull-right">(70)</span>Brand5</a></li>
-                    <li><a href="#"> <span class="pull-right">(90)</span>Brand6</a></li>
-                    <li><a href="#"> <span class="pull-right">(10)</span>Brand7</a></li>
+                    @foreach($brands as $brand)
+                    <li><a href="#"> <span class="pull-right">({{ $brand->total }})</span>{{ $brand->brand }}</a></li>
+                    @endforeach
                 </div>
                 <!-- Brand of products end here-->
 
@@ -198,120 +202,36 @@
             <div class="col-md-9">
                 <h3 class="title text-center lines">Features Items</h3>
                 <div class="row">
+                    @foreach ($products as $product)
+                    @csrf
                     <div class="col-md-4 product-card">
                         <div class="single-products">
                             <div class="productinfo text-center">
-                                <a type="button" href="{{ route('product', ['product'=>'producttest']) }}"><img class="product-img" src="image/products/product1.jpg" alt="product1" /></a>
+                                <a type="button" href="{{ route('product', ['product' =>strval($product->asing) ]) }}"><img class="product-img" src="{{ explode("|",$product->images)[0] }}" alt="product1" /></a>
                                 <img class="label" src="image/labels/new.png" alt="new label">
                             </div>
                             <div class=" product-overlay">
                                 <div class="overlay-content">
-                                    <h3 class="text-center">₹2999</h3>
-                                    <p class="text-center">Fantastic product for you</p>
-                                    <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <h3 class="text-center">₹{{$product->price}}</h3>
+                                    <p class="text-center">{{ substr($product->title, 0, 50) }}</p>
+                                    <form action="{{ route('cartAdd', ['product'=>$product->asing]) }}" method="POST">
+                                        @csrf
+                                        @if($product->stock==="YES")
+                                        <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        @else
+                                        <button class="btn btn-default add-to-cart disabled"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                        @endif
+                                    </form>
                                 </div>
                                 <ul class="nav nav-pills nav-justified">
                                     <li><a href="#"><i class="fa fa-plus-square"></i>Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Compare</a></li>
+                                    <li><a href="{{ route('product', ['product' =>strval($product->asing) ]) }}"><i class="fa fa-plus-square"></i>Detail</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 product-card">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img class="product-img" src="image/products/product2.jpg" alt="product1" />
-                                <img class="label" src="image/labels/new.png" alt="new label">
-                            </div>
-                            <div class="product-overlay">
-                                <div class="overlay-content">
-                                    <h3 class="text-center">₹1499</h3>
-                                    <p class="text-center">Fantastic product for you</p>
-                                    <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-card">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img class="product-img" src="image/products/product3.jpg" alt="product1" />
-                                <img class="label" src="image/labels/new.png" alt="new label">
-                            </div>
-                            <div class="product-overlay">
-                                <div class="overlay-content">
-                                    <h3 class="text-center">₹2499</h3>
-                                    <p class="text-center">Fantastic product for you</p>
-                                    <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-card">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img class="product-img" src="image/products/product4.jpg" alt="product1" />
-                                <img class="label" src="image/labels/sale.png" alt="new label">
-                            </div>
-                            <div class="product-overlay">
-                                <div class="overlay-content">
-                                    <h3 class="text-center">₹99</h3>
-                                    <p class="text-center">Fantastic product for you</p>
-                                    <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-card">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img class="product-img" src="image/products/product5.jpg" alt="product1" />
-                                <img class="label" src="image/labels/new.png" alt="new label">
-                            </div>
-                            <div class="product-overlay">
-                                <div class="overlay-content">
-                                    <h3 class="text-center">₹7999</h3>
-                                    <p class="text-center">Fantastic product for you</p>
-                                    <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-card">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img class="product-img" src="image/products/product6.jpg" alt="product1" />
-                                <img class="label" src="image/labels/sale.png" alt="new label">
-                            </div>
-                            <div class="product-overlay">
-                                <div class="overlay-content">
-                                    <h3 class="text-center">₹9</h3>
-                                    <p class="text-center">Fantastic product for you</p>
-                                    <a href="#" class="btn btn-default add-to-cart "><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
                 </div>
             </div>
         </div>

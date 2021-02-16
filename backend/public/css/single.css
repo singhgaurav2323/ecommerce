@@ -78,6 +78,7 @@ body{
 
 .main-img img{
     padding: 15px;
+    min-width: 335px;
     max-height: 410px;
     max-width: 410px;
     margin-left: 10px;
