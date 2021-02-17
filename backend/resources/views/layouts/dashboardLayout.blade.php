@@ -54,13 +54,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 clearfix">
-                    <a href="{{ route('dashboard') }}"><img class="logo" src="./image/logo.jpg" alt="Company logo"></a>
+                    <a href="{{ route('dashboard') }}"><img class="logo" src="/image/logo.jpg" alt="Company logo"></a>
                 </div>
                 <div class="col-12 col-md-8 middle">
                     <ul class="navbar-links">
-                        <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                        @if(Auth::check())
                         <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                        <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                        <li><a href="{{ route('cartShow', ['id'=>Auth::user()->id]) }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                        @else
+                        <li><a href="{{ route('login') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fa fa-star"></i> Wishlist</a></li>
+                        <li><a href="{{ route('login') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                        @endif
+
                         @guest
                         @if (Route::has('login'))
                         <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>

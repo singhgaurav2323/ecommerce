@@ -8,8 +8,11 @@ use App\Models\Cart;
 
 class CartController extends Controller
 {
-    public function index()
+    public function show($id)
     {
+        $products = Cart::join('products', 'product_id', '=', 'products.asing')->where('user_id', $id)->get();
+
+        return view('showCart', ['products' => $products]);
     }
 
     public function create()
@@ -19,12 +22,24 @@ class CartController extends Controller
         $asing = $product[0]["asing"];
         $user = auth()->user()->id;
 
-        $cart = new Cart();
-        $cart->user_id = $user;
-        $cart->product_id = $asing;
+        $find = Cart::select()->where('product_id', $asing)->count();
+        if ($find) {
+            return redirect(route('cartShow', ['id' => auth()->user()->id]));
+        } else {
 
-        $cart->save();
+            $cart = new Cart();
+            $cart->user_id = $user;
+            $cart->product_id = $asing;
 
-        return redirect('/')->with('cart', 'added to cart successfully');
+            $cart->save();
+
+            return redirect('/')->with('cart', 'added to cart successfully');
+        }
+    }
+
+    public function destroy($id, $product)
+    {
+        $deletedProduct = Cart::where('user_id', $id)->where('product_id', $product)->delete();
+        return redirect(route('cartShow', ['id' => auth()->user()->id]));
     }
 }

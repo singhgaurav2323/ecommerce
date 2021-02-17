@@ -26,4 +26,6 @@ Route::get('/{product}', [ProductController::class, 'show'])->name('product');
 
 
 // cart routing
+Route::get('/mycart/{id}', [CartController::class, 'show'])->middleware('auth')->name('cartShow');
 Route::post('/addToCart', [CartController::class, 'create'])->middleware('auth')->name('cartAdd');
+Route::delete('/destroy/{id}/{product}', [CartController::class, 'destroy'])->middleware('auth')->name('removeCart');
