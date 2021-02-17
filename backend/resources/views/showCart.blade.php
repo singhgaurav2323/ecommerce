@@ -28,7 +28,9 @@
                     @method('put')
                     @csrf
                     </form>
-                    <input id=" quantity" type="number" name="quantity" min="1" max="5" style="margin-left:15px; margin-bottom:4px; width:40px;" value="{{$product->quantity}}" readonly>
+
+                    <input style="margin-left:15px; margin-bottom:4px; width:40px;" value="{{$product->quantity}}" readonly>
+
                     <form action=" {{ route('decreaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
                         <button type=" button" style="border-radius: 50%; width: 20px; border: none; background-color: darkkhaki; font-weight: bold; font-size: 17px; font-family: fantasy; position: relative; top: -30px; left: 60px; outline:none;">-</button>
                         @method('put')

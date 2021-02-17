@@ -31,3 +31,5 @@ Route::post('/addToCart', [CartController::class, 'create'])->middleware('auth')
 Route::put('/decrease/{cartid}', [CartController::class, 'decrease'])->middleware('auth')->name('decreaseQuantity');
 Route::put('/increase/{cartid}', [CartController::class, 'increase'])->middleware('auth')->name('increaseQuantity');
 Route::delete('/destroy/{id}/{product}', [CartController::class, 'destroy'])->middleware('auth')->name('removeCart');
+
+// Payments routes

@@ -42,8 +42,16 @@ class CartController extends Controller
 
     public function decrease($cartid)
     {
-        $affected = Cart::where('id', $cartid)->decrement('quantity');
-        return redirect(route('cartShow', ['id' => auth()->user()->id]));
+        $count = Cart::select('quantity')->where('id', $cartid)->get();
+        $productId = Cart::select('product_id')->where('id', $cartid)->get();
+
+        if ($count[0]->quantity < 2) {
+            $deletedProduct = Cart::where('user_id', auth()->user()->id)->where('product_id', $productId[0]->product_id)->delete();
+            return redirect(route('cartShow', ['id' => auth()->user()->id]));
+        } else {
+            $affected = Cart::where('id', $cartid)->decrement('quantity');
+            return redirect(route('cartShow', ['id' => auth()->user()->id]));
+        }
     }
 
     public function increase($cartid)
