@@ -10,7 +10,10 @@ class CartController extends Controller
 {
     public function show($id)
     {
-        $products = Cart::join('products', 'product_id', '=', 'products.asing')->where('user_id', $id)->get();
+        $products = Cart::select('products.*', 'carts.quantity', 'carts.id as cartid')
+            ->join('products', 'product_id', '=', 'products.asing')
+            ->where('user_id', $id)
+            ->get();
 
         return view('showCart', ['products' => $products]);
     }
@@ -36,6 +39,19 @@ class CartController extends Controller
             return redirect('/')->with('cart', 'added to cart successfully');
         }
     }
+
+    public function decrease($cartid)
+    {
+        $affected = Cart::where('id', $cartid)->decrement('quantity');
+        return redirect(route('cartShow', ['id' => auth()->user()->id]));
+    }
+
+    public function increase($cartid)
+    {
+        $affected = Cart::where('id', $cartid)->increment('quantity');
+        return redirect(route('cartShow', ['id' => auth()->user()->id]));
+    }
+
 
     public function destroy($id, $product)
     {

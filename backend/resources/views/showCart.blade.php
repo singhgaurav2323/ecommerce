@@ -23,20 +23,31 @@
                     <p class="card-text">{{ substr($product->title, 0, 50) }}</p>
                 </div>
                 <div class="quantity" style="display: grid; margin-left: 20px; margin-right:40px;" ">
-                    <input type=" number" id="quantity" name="quantity" min=" 1" style="margin-left:15px; margin-bottom:4px; width:40px;" value="1">
+                    <form action=" {{ route('increaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
+                    <button type=" button" style="border-radius: 50%; width: 20px; border: none; background-color: darkkhaki; font-weight: bold; font-size: 16px; font-family: fantasy; position: relative; top: 28px; left: -10px; outline:none;">+</button>
+                    @method('put')
+                    @csrf
+                    </form>
+                    <input id=" quantity" type="number" name="quantity" min="1" max="5" style="margin-left:15px; margin-bottom:4px; width:40px;" value="{{$product->quantity}}" readonly>
+                    <form action=" {{ route('decreaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
+                        <button type=" button" style="border-radius: 50%; width: 20px; border: none; background-color: darkkhaki; font-weight: bold; font-size: 17px; font-family: fantasy; position: relative; top: -30px; left: 60px; outline:none;">-</button>
+                        @method('put')
+                        @csrf
+                    </form>
+
                     <form action="{{ route('removeCart', ['id'=>auth()->user()->id, 'product'=>$product->asing]) }}" method="post">
                         <button class="btn btn-alert text-silent" style="color:red;"> Delete</button>
                         @method('delete')
                         @csrf
                     </form>
                 </div>
-                <div class="price" style="width: 80px;">
-                    <p style="font-size: 15px;">₹ <b>{{ $product->price }} X <p id="input"></p></b> </p>
+                <div class="price" style="width: 80px; margin-top: 30px;">
+                    <p style="font-size: 15px;">₹ <b>{{ $product->price }} X {{ $product->quantity }} </b> </p>
                 </div>
             </div>
 
             @php
-            $total = $total + intval($product->price, 10);
+            $total = $total + intval($product->price, 10)*($product->quantity);
             @endphp
             @endforeach
         </div>

@@ -28,4 +28,6 @@ Route::get('/{product}', [ProductController::class, 'show'])->name('product');
 // cart routing
 Route::get('/mycart/{id}', [CartController::class, 'show'])->middleware('auth')->name('cartShow');
 Route::post('/addToCart', [CartController::class, 'create'])->middleware('auth')->name('cartAdd');
+Route::put('/decrease/{cartid}', [CartController::class, 'decrease'])->middleware('auth')->name('decreaseQuantity');
+Route::put('/increase/{cartid}', [CartController::class, 'increase'])->middleware('auth')->name('increaseQuantity');
 Route::delete('/destroy/{id}/{product}', [CartController::class, 'destroy'])->middleware('auth')->name('removeCart');
