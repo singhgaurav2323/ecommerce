@@ -10,12 +10,16 @@ class CartController extends Controller
 {
     public function show($id)
     {
-        $products = Cart::select('products.*', 'carts.quantity', 'carts.id as cartid')
-            ->join('products', 'product_id', '=', 'products.asing')
-            ->where('user_id', $id)
-            ->get();
+        if ($id == auth()->user()->id) {
+            $products = Cart::select('products.*', 'carts.quantity', 'carts.id as cartid')
+                ->join('products', 'product_id', '=', 'products.asing')
+                ->where('user_id', $id)
+                ->get();
 
-        return view('showCart', ['products' => $products]);
+            return view('showCart', ['products' => $products]);
+        } else {
+            abort(401);
+        }
     }
 
     public function create()
