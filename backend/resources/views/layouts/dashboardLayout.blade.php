@@ -59,7 +59,7 @@
                 <div class="col-12 col-md-8 middle">
                     <ul class="navbar-links">
                         @if(Auth::check())
-                        <li><a href="#"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                        <li><a href="{{ route('checkout', ['userid'=>auth()->user()->id]) }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                         <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                         <li><a href="{{ route('cartShow', ['id'=>Auth::user()->id]) }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                         @else

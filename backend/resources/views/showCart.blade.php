@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="card" style="margin-top: 10px; width: 450px;">
-            <a class="card-header" href="#" style="display:flex; justify-content: center; background-color: burlywood; color:black;"><i class="fa fa-lock" style="margin-top: 4px; margin-right:5px;"></i><b>Checkout</b></a>
+            <a class="card-header" href="{{ route('checkout', ['userid'=>auth()->user()->id]) }}" style="display:flex; justify-content: center; background-color: burlywood; color:black;"><i class="fa fa-lock" style="margin-top: 4px; margin-right:5px;"></i><b>Checkout</b></a>
         </div>
     </div>
 </div>

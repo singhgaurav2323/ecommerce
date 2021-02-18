@@ -23,7 +23,7 @@
                         @csrf
                         <li><button type="submit"><i class="far fa-shopping-cart"></i>Add To Cart</button></li>
                     </form>
-                    <li><button type="submit"><i class="fab fa-cc-mastercard"></i>Buy Now</button></li>
+                    <li><a href="{{ route('buyNow', ['productid'=>$product->asing]) }}"><button type="submit"><i class="fab fa-cc-mastercard"></i>Buy Now</button></a></li>
                 </ul>
             </div>
         </div>
