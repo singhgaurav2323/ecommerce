@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ Auth::routes();
 
 // Home setup
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/payments', [HomeController::class, 'showPayments'])->name('paymentHistory');
+
 
 // Product and Dashboard setup
 Route::get('/', [ProductController::class, 'index'])->name('dashboard');

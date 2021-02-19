@@ -14,7 +14,9 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Welcome Back! Glad to see you back.') }}
+                    <br />
+                    {{ __('We are having some more options for you.') }}
                 </div>
             </div>
         </div>

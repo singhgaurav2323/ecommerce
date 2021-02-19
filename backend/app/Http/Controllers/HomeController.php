@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Payment;
+use App\Models\Products;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function showPayments()
+    {
+        $userId = auth()->user()->id;
+        $payments = Payment::select('payments.*', 'products.images', 'products.title', 'products.brand')
+            ->join('products', 'product_id', '=', 'products.asing')
+            ->where('user_id', $userId)->get();
+
+        return view('payments', ['payments' => $payments]);
     }
 }
