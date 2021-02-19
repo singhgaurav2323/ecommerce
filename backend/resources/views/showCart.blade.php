@@ -22,16 +22,16 @@
                     <h5 class="card-title">{{ $product->brand }}</h5>
                     <p class="card-text">{{ substr($product->title, 0, 50) }}</p>
                 </div>
-                <div class="quantity" style="display: grid; margin-left: 20px; margin-right:40px;" ">
-                    <form action=" {{ route('increaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
-                    <button type=" button" style="border-radius: 50%; width: 20px; border: none; background-color: darkkhaki; font-weight: bold; font-size: 16px; font-family: fantasy; position: relative; top: 28px; left: -10px; outline:none;">+</button>
-                    @method('put')
-                    @csrf
+                <div class="quantity" style="display: grid; margin-left: 20px; margin-right:40px;">
+                    <form id="increment" action=" {{ route('increaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
+                        <button type=" button" style="border-radius: 50%; width: 20px; border: none; background-color: darkkhaki; font-weight: bold; font-size: 16px; font-family: fantasy; position: relative; top: 28px; left: -10px; outline:none;">+</button>
+                        @method('put')
+                        @csrf
                     </form>
 
                     <input style="margin-left:15px; margin-bottom:4px; width:40px;" value="{{$product->quantity}}" readonly>
 
-                    <form action=" {{ route('decreaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
+                    <form id="decrement" action=" {{ route('decreaseQuantity', ['cartid'=>$product->cartid]) }}" method="post">
                         <button type=" button" style="border-radius: 50%; width: 20px; border: none; background-color: darkkhaki; font-weight: bold; font-size: 17px; font-family: fantasy; position: relative; top: -30px; left: 60px; outline:none;">-</button>
                         @method('put')
                         @csrf

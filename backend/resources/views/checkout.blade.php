@@ -37,7 +37,7 @@
 
             @php
             $quantity = $product->quantity === "NA" ? 1 : $product->quantity;
-            array_push($productSeq, array($product->asing, intval($product->price+$product->price*0.18, 10), $quantity));
+            array_push($productSeq, array($product->asing, intval($product->price+$product->price*0.18, 10), $quantity, $product->cartid));
             $total = $total + intval($product->price, 10)*($product->quantity === "NA" ? 1 : $product->quantity);
             @endphp
             @endforeach
@@ -85,13 +85,13 @@
 
                 <div class="payment-options">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="mode" id="visa" value="visa">
+                        <input class="form-check-input" type="radio" name="mode" id="visa" value="visa-card">
                         <label class="form-check-label" for="visa">
                             <i class="fa fa-cc-visa"></i> Visa Card
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="mode" id="master" value="master" checked>
+                        <input class="form-check-input" type="radio" name="mode" id="master" value="master-card" checked>
                         <label class="form-check-label" for="master">
                             <i class="fa fa-cc-mastercard"></i> Master Card
                         </label>

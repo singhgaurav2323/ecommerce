@@ -30,6 +30,7 @@ class PaymentController extends Controller
     public function index($productid)
     {
         $products = Products::select()->where('asing', $productid)->get();
+        $products[0]->quantity = 1;
 
         return view('checkout', ['products' => $products]);
     }
@@ -49,6 +50,9 @@ class PaymentController extends Controller
                 $pay->amount = $instances[1];
                 $pay->quantity = $instances[2];
                 $pay->save();
+
+                // destroy the respective payments
+                $deletedProduct = Cart::where('id', $instances[3])->delete();
             }
 
             return redirect('/')->with('payment', 'Successfully added to purchase');
