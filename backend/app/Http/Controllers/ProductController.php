@@ -22,6 +22,18 @@ class ProductController extends Controller
         return view('dashboard', ['products' => $products, 'brands' => $brands, 'paginator' => $paginatePage]);
     }
 
+    public function search()
+    {
+        $inp = request()['search'];
+        $results = Products::where('title', 'LIKE', '%' . $inp . '%')
+            ->orWhere('category', 'LIKE', '%' . $inp . '%')
+            ->orWhere('brand', 'LIKE', '%' . $inp . '%')
+            ->get();
+        // dd($results);
+
+        return view('productSearch', ['results' => $results]);
+    }
+
     public function show($product)
     {
         $productDetail = Products::where('asing', $product)->firstOrFail();

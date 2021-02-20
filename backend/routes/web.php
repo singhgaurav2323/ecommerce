@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 // Authentication setup
 Auth::routes();
 
+
 // Home setup
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/payments', [HomeController::class, 'showPayments'])->name('paymentHistory');
@@ -28,6 +29,7 @@ Route::get('/home/payments', [HomeController::class, 'showPayments'])->name('pay
 // Product and Dashboard setup
 Route::get('/', [ProductController::class, 'index'])->name('dashboard');
 Route::get('/{product}', [ProductController::class, 'show'])->name('product');
+Route::any('/seachProduct', [ProductController::class, 'search'])->name('productSearch'); // dealing
 
 // Cart routing
 Route::get('/mycart/{id}', [CartController::class, 'show'])->middleware('auth')->name('cartShow');
@@ -35,6 +37,7 @@ Route::post('/addToCart', [CartController::class, 'create'])->middleware('auth')
 Route::put('/decrease/{cartid}', [CartController::class, 'decrease'])->middleware('auth')->name('decreaseQuantity');
 Route::put('/increase/{cartid}', [CartController::class, 'increase'])->middleware('auth')->name('increaseQuantity');
 Route::delete('/destroy/{id}/{product}', [CartController::class, 'destroy'])->middleware('auth')->name('removeCart');
+
 
 // Payments routes
 Route::get('/checkout/{userid}', [PaymentController::class, 'show'])->middleware('auth')->name('checkout');

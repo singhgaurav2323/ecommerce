@@ -59,12 +59,22 @@
                 <div class="col-12 col-md-8 middle">
                     <ul class="navbar-links">
                         @if(Auth::check())
+                        <li>
+                            <form action="{{ route('productSearch') }}" method="post" class="form-outline" style="display: flex;">
+                                <input name="search" id="search-focus" type="search" id="form1" placeholder="Search ..." class="form-control" />
+                                @csrf
+                            </form>
+                        </li>
                         <li><a href="{{ route('checkout', ['userid'=>auth()->user()->id]) }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                        <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                         <li><a href="{{ route('cartShow', ['id'=>Auth::user()->id]) }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                         @else
+                        <li>
+                            <form action="{{ route('productSearch') }}" method="post" class="form-outline" style="display: flex;">
+                                <input name="search" id="search-focus" type="search" id="form1" placeholder="Search ..." class="form-control" />
+                                @csrf
+                            </form>
+                        </li>
                         <li><a href="{{ route('login') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                        <li><a href="{{ route('login') }}"><i class="fa fa-star"></i> Wishlist</a></li>
                         <li><a href="{{ route('login') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                         @endif
 
