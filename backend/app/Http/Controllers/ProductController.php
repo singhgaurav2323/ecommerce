@@ -18,7 +18,7 @@ class ProductController extends Controller
             ->get();
 
         $paginatePage = Products::paginate(3)->withQueryString();
-        // dd($paginatePage->currentPage());
+
         return view('dashboard', ['products' => $products, 'brands' => $brands, 'paginator' => $paginatePage]);
     }
 

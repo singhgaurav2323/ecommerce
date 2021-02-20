@@ -33,8 +33,8 @@ class HomeController extends Controller
         $userId = auth()->user()->id;
         $payments = Payment::select('payments.*', 'products.images', 'products.title', 'products.brand')
             ->join('products', 'product_id', '=', 'products.asing')
-            ->where('user_id', $userId)->get();
-
+            ->where('user_id', $userId)->paginate(3);
+        // dd($payments);
         return view('payments', ['payments' => $payments]);
     }
 }

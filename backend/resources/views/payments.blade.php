@@ -14,6 +14,7 @@
         <div class="card" style="margin: 10px; width: 585px;">
             <h5 class="card-header">Your Cart ( {{$payments->count()}} )</h5>
         </div>
+        @if ($payments->lastPage() > 1)
         <div class="card" style="margin: 10px; display: -webkit-inline-box;">
             @foreach($payments as $payment)
             <div id="{{ $payment->id}}" class="card-body" onmouseover="main({mode:'<?php echo ($payment->mode); ?>', amount:'<?php echo ($payment->amount); ?>', quantity:'<?php echo ($payment->quantity); ?>', placed:'<?php echo ($payment->created_at); ?>', title:'<?php echo ($payment->title); ?>', brand:'<?php echo ($payment->brand); ?>'})" style="display: inline-flex;">
@@ -34,6 +35,20 @@
             </div>
             @endforeach
         </div>
+        <ul class="pagination" style="display: flex; justify-content: center; margin: 20px;">
+            <li style="transform: scale(1.9);" class="{{ ($payments->currentPage() == 1) ? 'disabled' : '' }}">
+                <a class="scale-font" href="{{ $payments->url($payments->currentPage()-1) }}">&laquo;...</a>
+            </li>
+            @for($i = 1; $i <= $payments->lastPage(); $i++)
+                <li class="{{ ($payments->currentPage() == $i) ? 'active-bar' : '' }}">
+                    <a href="{{ $payments->url($i) }}">{{ $i }}</a>
+                </li>
+                @endfor
+                <li style="transform: scale(1.9);" class="{{ ($payments->currentPage() == $payments->lastPage()) ? ' disabled' : '' }}">
+                    <a href="{{ $payments->url($payments->currentPage()+1) }}">...&raquo;</a>
+                </li>
+        </ul>
+        @endif
     </div>
 
 
