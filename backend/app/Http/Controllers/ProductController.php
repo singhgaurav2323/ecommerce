@@ -29,7 +29,7 @@ class ProductController extends Controller
             ->orWhere('category', 'LIKE', '%' . $inp . '%')
             ->orWhere('brand', 'LIKE', '%' . $inp . '%')
             ->get();
-        // dd($results);
+
 
         return view('productSearch', ['results' => $results]);
     }

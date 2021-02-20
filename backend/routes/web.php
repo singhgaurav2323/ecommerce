@@ -29,7 +29,7 @@ Route::get('/home/payments', [HomeController::class, 'showPayments'])->name('pay
 // Product and Dashboard setup
 Route::get('/', [ProductController::class, 'index'])->name('dashboard');
 Route::get('/{product}', [ProductController::class, 'show'])->name('product');
-Route::any('/seachProduct', [ProductController::class, 'search'])->name('productSearch'); // dealing
+Route::any('/seachProduct', [ProductController::class, 'search'])->name('productSearch');
 
 // Cart routing
 Route::get('/mycart/{id}', [CartController::class, 'show'])->middleware('auth')->name('cartShow');
