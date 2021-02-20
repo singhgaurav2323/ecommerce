@@ -29,7 +29,6 @@ Route::get('/home/payments', [HomeController::class, 'showPayments'])->name('pay
 Route::get('/', [ProductController::class, 'index'])->name('dashboard');
 Route::get('/{product}', [ProductController::class, 'show'])->name('product');
 
-
 // Cart routing
 Route::get('/mycart/{id}', [CartController::class, 'show'])->middleware('auth')->name('cartShow');
 Route::post('/addToCart', [CartController::class, 'create'])->middleware('auth')->name('cartAdd');

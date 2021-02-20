@@ -61,6 +61,7 @@
     $total = intval($total+$total*0.18, 10)
     @endphp
 
+    @if(!$products->count() == 0)
     <div class="col-md-4 offset-md-1 payment-main" style="padding: 25px; margin-top: 30px;">
         <div class="d-flex justify-content-center">
             <h4><i class="fa fa-shopping-cart"></i> Checkout</h4>
@@ -148,5 +149,8 @@
             @csrf
         </form>
     </div>
+
+    @endif
+
 </div>
 @endsection

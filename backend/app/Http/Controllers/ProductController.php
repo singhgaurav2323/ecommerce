@@ -10,14 +10,16 @@ class ProductController extends Controller
     public function index()
     {
         $products = Products::inRandomOrder()->limit(6)->get();
+
         $brands = Products::select('brand', Products::raw('count(*) as total'))
             ->groupBy('brand')
             ->orderBy('total', 'DESC')
             ->limit(10)
             ->get();
-        $paginatePage = Products::inRandomOrder()->paginate(3);
 
-        return view('dashboard', ['products' => $products, 'brands' => $brands, 'pages' => $paginatePage]);
+        $paginatePage = Products::paginate(3)->withQueryString();
+        // dd($paginatePage->currentPage());
+        return view('dashboard', ['products' => $products, 'brands' => $brands, 'paginator' => $paginatePage]);
     }
 
     public function show($product)

@@ -59,7 +59,7 @@
 <!-- Slider images ends here -->
 
 <!-- Main Feature product listing -->
-<section id="products">
+<section id="products" style="padding: 17px;">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -391,10 +391,110 @@
                 <i class="fa fa-angle-right fa-lg"></i>
             </a>
         </div>
-
-
     </div>
     <!-- Pagination and Scroll of product ends here-->
+
+    <!-- Pagination product -->
+    <div class="container">
+        <h3 class="title text-center lines recommend">Trending Items</h3>
+
+        <div id="carouselExampleInterval" class="carousel slide recommend-box">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <div class="row">
+                        <div class="col-md-3 offset-lg-2 offset-md-2">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a type="button" href="{{ route('product', ['product' =>strval($paginator[0]->asing) ]) }}">
+                                        <img class="product-img" src="image/products/product7.jpg" alt="product1" />
+                                    </a>
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h3 class="text-center">₹ {{$paginator[0]->price}}</h3>
+                                        <p class="text-center">{{$paginator[0]->brand}}</p>
+                                        <form action="{{ route('cartAdd', ['product'=>$paginator[0]->asing]) }}" method="POST">
+                                            @csrf
+                                            @if($product->stock==="YES")
+                                            <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            @else
+                                            <button class="btn btn-default add-to-cart disabled"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            @endif
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a type="button" href="{{ route('product', ['product' =>strval($paginator[1]->asing) ]) }}">
+                                        <img class="product-img" src="image/products/product1.jpg" alt="product1" />
+                                    </a>
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h3 class="text-center">₹ {{$paginator[1]->price}}</h3>
+                                        <p class="text-center">{{$paginator[1]->brand}}</p>
+                                        <form action="{{ route('cartAdd', ['product'=>$paginator[1]->asing]) }}" method="POST">
+                                            @csrf
+                                            @if($product->stock==="YES")
+                                            <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            @else
+                                            <button class="btn btn-default add-to-cart disabled"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            @endif
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <a type="button" href="{{ route('product', ['product' =>strval($paginator[2]->asing) ]) }}">
+                                        <img class="product-img" src="image/products/product10.jpg" alt="product1" />
+                                    </a>
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h3 class="text-center">₹ {{$paginator[2]->price}}</h3>
+                                        <p class="text-center">{{$paginator[2]->brand}}</p>
+                                        <form action="{{ route('cartAdd', ['product'=>$paginator[2]->asing]) }}" method="POST">
+                                            @csrf
+                                            @if($product->stock==="YES")
+                                            <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            @else
+                                            <button class="btn btn-default add-to-cart disabled"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                            @endif
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paginator listing  setting-->
+                    @if ($paginator->lastPage() > 1)
+                    <ul class="pagination" style="display: flex; justify-content: center; margin: 20px;">
+                        <li style="transform: scale(1.9);" class="{{ ($paginator->currentPage() == 1) ? 'disabled' : '' }}">
+                            <a class="scale-font" href="{{ $paginator->url($paginator->currentPage()-1) }}">&laquo;...</a>
+                        </li>
+                        @for($i = $paginator->currentPage(); $i <= $paginator->currentPage()+10; $i++)
+                            <li class="{{ ($paginator->currentPage() == $i) ? 'active-bar' : '' }}">
+                                <a href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                            </li>
+                            @endfor
+                            <li style="transform: scale(1.9);" class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
+                                <a href="{{ $paginator->url($paginator->currentPage()+1) }}">...&raquo;</a>
+                            </li>
+                    </ul>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pagination of product ends here-->
 
 </section>
 <!-- Main product listing ends here -->

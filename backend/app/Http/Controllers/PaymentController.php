@@ -12,6 +12,7 @@ class PaymentController extends Controller
     // To show the Payment checkout for cart 
     public function show($userid)
     {
+        dd(request()["quantity"]);
         $currentUser = auth()->user()->id;
         if ($currentUser == $userid) {
 

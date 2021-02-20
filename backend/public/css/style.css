@@ -367,9 +367,25 @@ li a{
     right: -4%;
 }
 
+.disabled{
+    pointer-events: none;
+}
+
+.disabled a{
+    color: gray;
+}
 
 .recommend-box{
     position: relative;
+}
+
+.active-bar{
+    background-color: rgba(0, 225, 255, 0.363);
+}
+
+.active-bar a{
+    color: black;
+    transform: scale(1.1);
 }
 
 /* ****************************************************************** */
