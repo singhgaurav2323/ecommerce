@@ -40,6 +40,6 @@ Route::delete('/destroy/{id}/{product}', [CartController::class, 'destroy'])->mi
 
 
 // Payments routes
-Route::get('/checkout/{userid}', [PaymentController::class, 'show'])->middleware('auth')->name('checkout');
+Route::any('/checkout/{userid}/{flag?}', [PaymentController::class, 'show'])->middleware('auth')->name('checkout'); //working
 Route::get('/checkout/buy/{productid}', [PaymentController::class, 'index'])->middleware('auth')->name('buyNow');
 Route::post('/checkout/payment/{userid}', [PaymentController::class, 'create'])->middleware('auth')->name('createPayment');

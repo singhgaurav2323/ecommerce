@@ -12,10 +12,21 @@ class PaymentController extends Controller
     // To show the Payment checkout for cart 
     public function show($userid)
     {
-        dd(request()["quantity"]);
-        $currentUser = auth()->user()->id;
-        if ($currentUser == $userid) {
+        $data_parse = json_decode(request()['carts-details'], true);
+        $status = request()['flag'];
 
+        $currentUser = auth()->user()->id;
+
+        if ($currentUser == $userid) {
+            if (!$status == 0) {
+                // Updating the cart
+                foreach ($data_parse as $data) {
+                    Cart::where('product_id', $data[0])
+                        ->update(['quantity' => $data[1]]);
+                }
+            }
+
+            // reading the billing
             $products = Cart::select('products.*', 'carts.quantity', 'carts.id as cartid')
                 ->join('products', 'product_id', '=', 'products.asing')
                 ->where('user_id', $userid)

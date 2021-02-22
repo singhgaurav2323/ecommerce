@@ -65,7 +65,7 @@
                                 @csrf
                             </form>
                         </li>
-                        <li><a href="{{ route('checkout', ['userid'=>auth()->user()->id]) }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                        <li><a href="{{ route('checkout', ['userid'=>auth()->user()->id, 'flag'=>0]) }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                         <li><a href="{{ route('cartShow', ['id'=>Auth::user()->id]) }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                         @else
                         <li>

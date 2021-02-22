@@ -20,7 +20,7 @@
                         <td><a href="{{ route('product', ['product' =>strval($result->asing) ]) }}"><img src="{{ explode("|", $result->images)[0] }}" alt="product image"></a></td>
                         <td>{{ $result->title }}</td>
                         <td>{{ $result->brand }}</td>
-                        <td>{{ $result->price }}</td>
+                        <td>₹ {{ $result->price }}</td>
                     </tr>
                     @endforeach
                 </tbody>
