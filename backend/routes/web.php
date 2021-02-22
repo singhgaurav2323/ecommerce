@@ -29,17 +29,15 @@ Route::get('/home/payments', [HomeController::class, 'showPayments'])->name('pay
 // Product and Dashboard setup
 Route::get('/', [ProductController::class, 'index'])->name('dashboard');
 Route::get('/{product}', [ProductController::class, 'show'])->name('product');
-Route::any('/seachProduct', [ProductController::class, 'search'])->name('productSearch');
+Route::any('/seachProduct/search', [ProductController::class, 'search'])->name('productSearch');
 
 // Cart routing
 Route::get('/mycart/{id}', [CartController::class, 'show'])->middleware('auth')->name('cartShow');
 Route::post('/addToCart', [CartController::class, 'create'])->middleware('auth')->name('cartAdd');
-Route::put('/decrease/{cartid}', [CartController::class, 'decrease'])->middleware('auth')->name('decreaseQuantity');
-Route::put('/increase/{cartid}', [CartController::class, 'increase'])->middleware('auth')->name('increaseQuantity');
 Route::delete('/destroy/{id}/{product}', [CartController::class, 'destroy'])->middleware('auth')->name('removeCart');
 
 
 // Payments routes
-Route::any('/checkout/{userid}/{flag?}', [PaymentController::class, 'show'])->middleware('auth')->name('checkout'); //working
+Route::any('/checkout/{userid}/{flag?}', [PaymentController::class, 'show'])->middleware('auth')->name('checkout');
 Route::get('/checkout/buy/{productid}', [PaymentController::class, 'index'])->middleware('auth')->name('buyNow');
 Route::post('/checkout/payment/{userid}', [PaymentController::class, 'create'])->middleware('auth')->name('createPayment');

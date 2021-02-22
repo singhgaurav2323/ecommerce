@@ -28,10 +28,9 @@ class ProductController extends Controller
         $results = Products::where('title', 'LIKE', '%' . $inp . '%')
             ->orWhere('category', 'LIKE', '%' . $inp . '%')
             ->orWhere('brand', 'LIKE', '%' . $inp . '%')
-            ->get();
+            ->paginate(10);
 
-
-        return view('productSearch', ['results' => $results]);
+        return view('productSearch', ['results' => $results, 'keyword' => $inp]);
     }
 
     public function show($product)

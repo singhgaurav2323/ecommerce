@@ -60,7 +60,7 @@
                 <div class="col-sm-6" style="text-align: center;">₹ <b id="total2">{{ intval($total+$total*0.18, 10) }}</b></div>
             </div>
         </div>
-        <form action="{{ route('checkout', ['userid'=>auth()->user()->id]) }}" method="post" class="card" style="margin-top: 10px; width: 450px;">
+        <form action="{{ route('checkout', ['userid'=>auth()->user()->id, 'flag'=>1]) }}" method="post" class="card" style="margin-top: 10px; width: 450px;">
             <input type="hidden" name="carts-details" value="74">
             <button class="card-header" type="submit" onclick="pick()" style="border:none; outline:none; display:flex; justify-content: center; background-color: burlywood; color:black;">
                 <i class="fa fa-lock" style="margin-top: 4px; margin-right:5px;"></i><b>Checkout</b>
