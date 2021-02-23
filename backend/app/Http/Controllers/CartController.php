@@ -5,16 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Cart;
+use Illuminate\Auth\Events\Validated;
 
 class CartController extends Controller
 {
-    public function show($id)
+    public function show(Request $request)
     {
-        if ($id == auth()->user()->id) {
-            $products = Cart::select('products.*', 'carts.quantity', 'carts.id as cartid')
-                ->join('products', 'product_id', '=', 'products.asing')
-                ->where('user_id', $id)
-                ->get();
+        $validated = $request->validate([
+            'id' => 'requires|numeric|min:1'
+        ]);
+
+
+        if ($request->id == auth()->user()->id) {
+
+            $carts = new Cart;
+            $products = $carts->getUserProducts($request->id);
 
             return view('showCart', ['products' => $products]);
         } else {
